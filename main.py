@@ -1,4 +1,5 @@
 import requests
+import os
 
 from bs4 import BeautifulSoup
 from flask import Flask, render_template
@@ -74,4 +75,5 @@ class BwfRank(Resource):
 api.add_resource(BwfRank, '/api/bwf_rank')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
